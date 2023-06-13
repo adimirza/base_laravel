@@ -30,16 +30,25 @@ class Login extends Controller
         // $isHuman = Captcha::check();
         // print_r($isHuman);
         // die;
-        Validator::make($request->all(), [
-            'email' => 'required|email:dns',
-            'password' => 'required',
+        // Validator::make($request->all(), [
+        //     'email' => 'required|email:dns',
+        //     'password' => 'required',
             // 'captcha' => 'required|captcha'
             // 'CaptchaCode' => 'required|captcha_validate'
             // 'g-recaptcha-response' => 'recaptcha',
-        ])->validate();
+        // ])->validate();
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            $request->session()->regenerate();
+        if (Auth::attempt(['email' => $request->username, 'password' => $request->password])) {
+            // $request->session()->regenerate();
+            session()->regenerate();
+                $data = [
+                    'username' => $request->username,
+                    'status' => 1,
+                    'id_role' => 1,
+                ];
+            session()->put($data);
+            // print_r(session()->get('username'));
+            // die;
             return redirect()->intended('/');
         }
 
@@ -60,6 +69,7 @@ class Login extends Controller
         ]);
 
         $validatedData['password'] = Hash::make($validatedData['password']);
+        $validatedData['id_role'] = '1';
 
         UserModel::create($validatedData);
         return redirect('/login');

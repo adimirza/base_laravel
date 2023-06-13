@@ -18,6 +18,8 @@ class AuthSso
     public function handle(Request $request, Closure $next)
     {
         if(session()->get('username')){
+            print_r(session()->get('username'));
+            die;
             return $next($request);
         }elseif(!empty($_COOKIE['token_eoffice'])){
             $nip = $_COOKIE['nip_eoffice'];
@@ -41,6 +43,6 @@ class AuthSso
             }
             return $next($request);
         }
-        return redirect()->intended('http://localhost:8000?kode=base_laravel');
+        return redirect()->intended('http://localhost:8000/auth?kode=base_laravel');
     }
 }
