@@ -18,8 +18,6 @@ class AuthSso
     public function handle(Request $request, Closure $next)
     {
         if(session()->get('username')){
-            print_r(session()->get('username'));
-            die;
             return $next($request);
         }elseif(!empty($_COOKIE['token_eoffice'])){
             $nip = $_COOKIE['nip_eoffice'];

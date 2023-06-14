@@ -22,7 +22,7 @@
         <div class="sidebar-custom">
             <br>
             <center>
-                <a href="{{ url('http://localhost:8000/logout') }}" class="btn btn-secondary btn-block">Log Out</a>
+                <a href="{{ url('/logout') }}" class="btn btn-secondary btn-block">Log Out</a>
             </center>
         </div>
     </div>

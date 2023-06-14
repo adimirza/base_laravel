@@ -80,6 +80,6 @@ class Login extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        return redirect('http://localhost:8000/logout?kode=base_laravel');
     }
 }
