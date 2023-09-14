@@ -96,7 +96,7 @@ $profil = new GetProfilWeb;
             }
         });
     });
-</script>
+  </script>
 </body>
 
 </html>

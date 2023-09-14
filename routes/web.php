@@ -27,36 +27,36 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Route::get('/', [Dashboard::class, 'index'])->middleware(['auth', 'permission:dashboard,read']);
-Route::get('/', [Dashboard::class, 'index'])->middleware(['authSso']);
+Route::get('/', [Dashboard::class, 'index'])->middleware(['auth']);
 Route::get('/api_example', [Api_example::class, 'index']);
 
-Route::get('/user', [User::class, 'index'])->middleware(['authSso']);
-Route::get('/user/api', [User::class, 'api_user'])->middleware(['authSso']);
-Route::match(['get', 'post'],'/user/add', [User::class, 'store'])->middleware(['authSso']);
-Route::match(['get', 'post'],'/user/edit/{id}', [User::class, 'update'])->middleware(['authSso']);
-Route::delete('/user/delete/{id}', [User::class, 'delete'])->middleware(['authSso']);
+Route::get('/user', [User::class, 'index'])->middleware(['auth']);
+Route::get('/user/api', [User::class, 'api_user'])->middleware(['auth']);
+Route::match(['get', 'post'],'/user/add', [User::class, 'store'])->middleware(['auth']);
+Route::match(['get', 'post'],'/user/edit/{id}', [User::class, 'update'])->middleware(['auth']);
+Route::delete('/user/delete/{id}', [User::class, 'delete'])->middleware(['auth']);
 
-Route::get('/role', [Role::class, 'index'])->middleware(['authSso']);
-Route::match(['get', 'post'],'/role/add', [Role::class, 'store'])->middleware(['authSso']);
-Route::match(['get', 'post'],'/role/edit/{id}', [Role::class, 'update'])->middleware(['authSso']);
-Route::delete('/role/delete/{id}', [Role::class, 'delete'])->middleware(['authSso']);
+Route::get('/role', [Role::class, 'index'])->middleware(['auth']);
+Route::match(['get', 'post'],'/role/add', [Role::class, 'store'])->middleware(['auth']);
+Route::match(['get', 'post'],'/role/edit/{id}', [Role::class, 'update'])->middleware(['auth']);
+Route::delete('/role/delete/{id}', [Role::class, 'delete'])->middleware(['auth']);
 
-Route::get('/role_permission/{id}', [RolePermission::class, 'index'])->middleware(['authSso']);
-Route::post('/role_permission/add', [RolePermission::class, 'store'])->middleware(['authSso']);
+Route::get('/role_permission/{id}', [RolePermission::class, 'index'])->middleware(['auth']);
+Route::post('/role_permission/add', [RolePermission::class, 'store'])->middleware(['auth']);
 
-Route::get('/menu', [Menu::class, 'index'])->middleware(['authSso']);
-Route::match(['get', 'post'],'/menu/add', [Menu::class, 'store'])->middleware(['authSso']);
-Route::match(['get', 'post'],'/menu/edit/{id}', [Menu::class, 'update'])->middleware(['authSso']);
-Route::post('/menu/status', [Menu::class, 'status'])->middleware(['authSso']);
-Route::delete('/menu/delete/{id}', [Menu::class, 'delete'])->middleware(['authSso']);
+Route::get('/menu', [Menu::class, 'index'])->middleware(['auth']);
+Route::match(['get', 'post'],'/menu/add', [Menu::class, 'store'])->middleware(['auth']);
+Route::match(['get', 'post'],'/menu/edit/{id}', [Menu::class, 'update'])->middleware(['auth']);
+Route::post('/menu/status', [Menu::class, 'status'])->middleware(['auth']);
+Route::delete('/menu/delete/{id}', [Menu::class, 'delete'])->middleware(['auth']);
 
-Route::get('/menu_permission/{id}', [MenuPermission::class, 'index'])->middleware(['authSso']);
-Route::post('/menu_permission/add', [MenuPermission::class, 'store'])->middleware(['authSso']);
-Route::post('/menu_permission/status', [MenuPermission::class, 'status'])->middleware(['authSso']);
-Route::get('/menu_permission/refresh/{id}', [MenuPermission::class, 'refresh'])->middleware(['authSso']);
+Route::get('/menu_permission/{id}', [MenuPermission::class, 'index'])->middleware(['auth']);
+Route::post('/menu_permission/add', [MenuPermission::class, 'store'])->middleware(['auth']);
+Route::post('/menu_permission/status', [MenuPermission::class, 'status'])->middleware(['auth']);
+Route::get('/menu_permission/refresh/{id}', [MenuPermission::class, 'refresh'])->middleware(['auth']);
 
-Route::get('/profil_web', [ProfilWeb::class, 'index'])->middleware(['authSso']);
-Route::post('/profil_web/edit', [ProfilWeb::class, 'update'])->middleware(['authSso']);
+Route::get('/profil_web', [ProfilWeb::class, 'index'])->middleware(['auth']);
+Route::post('/profil_web/edit', [ProfilWeb::class, 'update'])->middleware(['auth']);
 // Route::post('/profil_web/edit_image', [ProfilWeb::class, 'update_image'])->middleware(['auth', 'permission:profil web,update']);
 
 Route::get('/reload-captcha', [Login::class, 'reloadCaptcha']);
